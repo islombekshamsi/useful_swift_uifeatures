@@ -1,5 +1,6 @@
 import SwiftUI
 
+// backbone of the glass tab, just copy and paste it and you're good
 struct CustomTabBar<TabItemView: View>: UIViewRepresentable{
     var size: CGSize
     var activeTint: Color = .blue

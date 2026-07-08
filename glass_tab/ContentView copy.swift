@@ -1,12 +1,14 @@
 import SwiftUI
 
 enum CustomTabParticipant: String, CaseIterable{
+    // cases to define what tabs you will have
     case home = "Home"
     case dashboard = "Dashboard"
     case profile = "Profile"
     
     var symbol: String {
         switch self {
+            // it returns the sf symbol icon you'll use for the tab 
             case .home: return "house"
             case .dashboard: return "archivebox"
             case .profile: return "person"
@@ -15,6 +17,8 @@ enum CustomTabParticipant: String, CaseIterable{
     }
     
     var actionSymbol: String {
+        // to the right of the tab there is an additional button with extra feature, 
+        // for that there is another icon use from sf symbols
         switch self{
             case .home: return "bell"
             case .dashboard: return "message"
@@ -23,6 +27,7 @@ enum CustomTabParticipant: String, CaseIterable{
     }
     
     var index: Int{
+        // determines whcih tab you are on
         Self.allCases.firstIndex(of: self) ?? 0
     }
 }
@@ -32,6 +37,7 @@ struct ContentView: View {
     var body: some View {
         TabView(selection: $activeTab) {
             Tab.init(value: .home){
+                // text is a placeholder, you can input the views
                 Text("Home")
                     .toolbarVisibility(.hidden, for: .tabBar)
             }
@@ -51,7 +57,9 @@ struct ContentView: View {
                 .padding(.horizontal, 20)
         }
     }
-    
+
+    // view builder is used to improve the visibility and making sure that you can 
+    // edit the tab design from separate func rather than main view
     @ViewBuilder
     func CustomTabBarView() -> some View{
         GlassEffectContainer(spacing: 10){
